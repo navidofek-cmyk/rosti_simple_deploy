@@ -6,6 +6,11 @@ export default defineConfig({
   server: {
     host: '0.0.0.0',
     port: 3010,
+    proxy: {
+      '/api': {
+        target: process.env.VITE_BACKEND_PROXY_TARGET ?? 'http://localhost:8010',
+        changeOrigin: true,
+      },
+    },
   },
 });
-

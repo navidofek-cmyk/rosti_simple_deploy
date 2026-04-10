@@ -1,8 +1,6 @@
 import type { HealthResponse, ServerTimeResponse, TimeZonesResponse } from './types';
 
-const API_BASE_URL =
-  import.meta.env.VITE_API_BASE_URL ??
-  (import.meta.env.DEV ? 'http://localhost:8010' : '');
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL ?? '';
 
 async function fetchJson<T>(path: string): Promise<T> {
   const response = await fetch(`${API_BASE_URL}${path}`);

@@ -107,7 +107,7 @@ npm run dev -- --host 0.0.0.0 --port 3010
 http://localhost:3010
 ```
 
-The frontend uses `http://localhost:8010` as its development API base by default.
+The frontend uses relative `/api` calls. In local non-Docker development, Vite proxies `/api` to `http://localhost:8010`. In Docker development, Vite proxies `/api` to the internal `backend:8010` service.
 
 ## Running tests
 
