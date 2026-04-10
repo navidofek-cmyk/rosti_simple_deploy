@@ -1,0 +1,29 @@
+services:
+  backend:
+    build:
+      context: ./backend
+    container_name: clock_portal_backend
+    command: uvicorn app.main:app --reload --host 0.0.0.0 --port 8010
+    environment:
+      APP_CORS_ORIGINS: http://localhost:3010,http://127.0.0.1:3010,http://localhost:5173,http://127.0.0.1:5173
+    volumes:
+      - ./backend:/app
+    ports:
+      - "8010:8010"
+
+  frontend:
+    build:
+      context: ./frontend
+      target: dev
+    container_name: clock_portal_frontend
+    command: npm run dev -- --host 0.0.0.0 --port 3010
+    environment:
+      CHOKIDAR_USEPOLLING: "true"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "3010:3010"
+    depends_on:
+      - backend
+
