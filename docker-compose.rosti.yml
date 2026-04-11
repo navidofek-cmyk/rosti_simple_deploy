@@ -1,21 +1,35 @@
+version: "3.9"
+
 services:
+  mgm:
+    image: harbor.rosti.cz/rosti-public/mgm:latest
+    environment:
+      TTYD_TOKEN: ${TTYD_TOKEN}
+      SET_SHELL: bash
+    volumes:
+      - /srv/stack:/srv/stack
+      - /root/.docker/:/root/.docker/
+      - /run/docker.sock:/run/docker.sock
+    ports:
+      - "1234:1234"
+    restart: always
+
   backend:
     build:
-      context: ./backend
+      context: /srv/stack/backend
     container_name: clock_portal_backend
     command: uvicorn app.main:app --host 0.0.0.0 --port 8010
-    environment:
-      APP_CORS_ORIGINS: http://localhost:80,http://127.0.0.1:80
     expose:
       - "8010"
+    restart: always
 
   frontend:
     build:
-      context: ./frontend
+      context: /srv/stack/frontend
       target: prod
     container_name: clock_portal_frontend
     ports:
       - "80:80"
     depends_on:
       - backend
-
+    restart: always
