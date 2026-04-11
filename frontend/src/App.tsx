@@ -113,7 +113,11 @@ function App() {
         <section>
           <div className="section-heading">
             <h3>World Clocks</h3>
-            <p>Updated every second from the backend API.</p>
+            <p>
+              {zones.length > 0
+                ? `${zones.length} cities refreshed every second from the backend API.`
+                : 'Updated every second from the backend API.'}
+            </p>
           </div>
 
           <div className="clock-grid">
@@ -149,4 +153,3 @@ function App() {
 }
 
 export default App;
-

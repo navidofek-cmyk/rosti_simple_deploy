@@ -11,8 +11,48 @@ from pydantic import BaseModel
 WORLD_ZONES = [
     ("Europe/Prague", "Prague"),
     ("Europe/London", "London"),
+    ("Europe/Dublin", "Dublin"),
+    ("Europe/Lisbon", "Lisbon"),
+    ("Europe/Madrid", "Madrid"),
+    ("Europe/Paris", "Paris"),
+    ("Europe/Amsterdam", "Amsterdam"),
+    ("Europe/Berlin", "Berlin"),
+    ("Europe/Rome", "Rome"),
+    ("Europe/Athens", "Athens"),
+    ("Europe/Helsinki", "Helsinki"),
+    ("Europe/Istanbul", "Istanbul"),
+    ("Africa/Cairo", "Cairo"),
+    ("Africa/Johannesburg", "Johannesburg"),
+    ("Africa/Nairobi", "Nairobi"),
+    ("Asia/Dubai", "Dubai"),
+    ("Asia/Jerusalem", "Jerusalem"),
+    ("Asia/Riyadh", "Riyadh"),
+    ("Asia/Karachi", "Karachi"),
+    ("Asia/Kolkata", "Mumbai"),
+    ("Asia/Dhaka", "Dhaka"),
+    ("Asia/Bangkok", "Bangkok"),
+    ("Asia/Singapore", "Singapore"),
+    ("Asia/Hong_Kong", "Hong Kong"),
+    ("Asia/Shanghai", "Shanghai"),
+    ("Asia/Seoul", "Seoul"),
     ("America/New_York", "New York"),
+    ("America/Toronto", "Toronto"),
+    ("America/Chicago", "Chicago"),
+    ("America/Denver", "Denver"),
+    ("America/Los_Angeles", "Los Angeles"),
+    ("America/Phoenix", "Phoenix"),
+    ("America/Mexico_City", "Mexico City"),
+    ("America/Bogota", "Bogota"),
+    ("America/Lima", "Lima"),
+    ("America/Santiago", "Santiago"),
+    ("America/Sao_Paulo", "Sao Paulo"),
+    ("America/Buenos_Aires", "Buenos Aires"),
     ("Asia/Tokyo", "Tokyo"),
+    ("Asia/Jakarta", "Jakarta"),
+    ("Australia/Perth", "Perth"),
+    ("Australia/Sydney", "Sydney"),
+    ("Pacific/Auckland", "Auckland"),
+    ("Pacific/Honolulu", "Honolulu"),
 ]
 
 
@@ -89,4 +129,3 @@ def zones() -> TimeZonesResponse:
     return TimeZonesResponse(
         zones=[build_time_payload(timezone_name, label) for timezone_name, label in WORLD_ZONES]
     )
-
